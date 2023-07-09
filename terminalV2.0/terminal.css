@@ -1,0 +1,40 @@
+body {
+  background-color: #000;
+  color: #0F0;
+  font-family: monospace;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.terminal {
+  border: 1px solid #0F0;
+  height: 400px;
+  margin: 20px;
+  overflow-y: scroll;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.matrix-effect-container {
+  position: relative;
+  height: 100%;
+  z-index: 0;
+}
+
+.matrix-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.matrix-letter {
+  position: absolute;
+  color: #0F0;
+  font-size: 20px;
+  pointer-events: none;
+}
