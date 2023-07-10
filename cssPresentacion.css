@@ -4,6 +4,18 @@ body {
   margin: 0;
   padding: 0;
 }
+.boton a{
+  background-color: black;
+  color: green;
+
+}
+
+.boton a:hover{
+  background-color: black;
+  color: greenyellow;
+  border-radius: 4px;
+
+}
 
 header {
   background-color: #333;
