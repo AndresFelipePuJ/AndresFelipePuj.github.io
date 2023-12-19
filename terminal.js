@@ -35,11 +35,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Definimos un diccionario con los comandos y sus respectivas respuestas
-var commandDict = {
-  'help': 'Lista de comandos disponibles:\n- help: Muestra la lista de comandos.\n- date: Muestra la fecha actual.',
-  'date': new Date().toLocaleString()
-};
+
+  
+  function comandList(dict) {
+    let keysString = '';
+    for (let key in dict) {
+      keysString += key + '\n';
+    }
+    return keysString;
+  }
+  
+  // Definimos inicialmente el diccionario sin 'help'
+  var commandDict = {
+    'Date': new Date().toLocaleString(),
+    'Biography': function() {
+      window.location.href = './Bio3D/index3D.html';
+    }
+  };
+  
+  // Actualizamos 'commandDict' con 'help' utilizando comandList(commandDict)
+  commandDict['help'] = comandList(commandDict);
 
 // Función para calcular la distancia de Levenshtein
 function levenshtein(a, b) {
@@ -69,22 +84,30 @@ function executeCommand(command) {
   // Convertimos el comando a minúsculas para que sea insensible a mayúsculas y minúsculas
   command = command.toLowerCase();
 
-  // Buscamos el comando más parecido en nuestro diccionario
-  var minDistance = Infinity;
-  var closestCommand = null;
-  for (var key in commandDict) {
+  // Buscamos el comando en nuestro diccionario
+  var selectedCommand = commandDict[command];
+
+  // Si encontramos una función asociada al comando, la ejecutamos
+  if (selectedCommand && typeof selectedCommand === 'function') {
+    return selectedCommand();
+  } else {
+    // Si no se encuentra el comando, buscamos el más parecido en el diccionario
+    var minDistance = Infinity;
+    var closestCommand = null;
+    for (var key in commandDict) {
       var distance = levenshtein(command, key);
       if (distance < minDistance) {
-          minDistance = distance;
-          closestCommand = key;
+        minDistance = distance;
+        closestCommand = key;
       }
-  }
+    }
 
-  // Si el comando más parecido es suficientemente cercano, devolvemos la respuesta correspondiente
-  if (minDistance <= 1) {
+    // Si el comando más parecido es suficientemente cercano, devolvemos la respuesta correspondiente
+    if (minDistance <= 1) {
       return commandDict[closestCommand];
-  } else {
+    } else {
       return 'Comando desconocido. Escribe "help" para obtener ayuda.';
+    }
   }
 }
 
@@ -101,3 +124,4 @@ function executeCommand(command) {
     }, typingSpeed);
   }
 });
+

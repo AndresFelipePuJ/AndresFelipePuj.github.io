@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Biografía 3D</title>
+  <style>
+    body { margin: 0; }
+    canvas { width: 70%; height: 100%; }
+    .info-container {
+      position: absolute;
+      top: 50px;
+      right: 20px; /* Alineación a la derecha con un margen */
+      width: 30%; /* Ancho del contenedor */
+    }
+    .info {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      text-align: justify; /* Justificación del texto */
+    }
+  </style>
+</head>
+<body>
+  <div class="info-container">
+    <div class="info">
+      <h1>Mi Biografía</h1>
+      <p>• Estudiante bilingüe de Ingeniería de sistemas de la Pontificia Universidad Javeriana con conocimientos en ingeniería de software, Análisis de Datos, arquitectura de software, desarrollo de aplicaciones de escritorio, web y de videojuegos.<br><br>
+        • Poseo habilidades técnicas enfocadas en el desarrollo de software y la transformación digital. Mi experiencia abarca el dominio de diversos lenguajes de modelado, como UML y BPMN, así como el manejo de lenguajes de desarrollo back-end, tales como Java, Python, C++, C#, y PHP. Asimismo, cuento con conocimientos en lenguajes de desarrollo front-end, incluyendo JavaScript, CSS, y TypeScript, y he trabajado con frameworks populares como Angular, React, NodeJS, Spring y ASP.NET.<br><br>
+        • Además, tengo experiencia en el uso del lenguaje SQL para bases de datos (DDL y DML), así como en el manejo de herramientas de visualización como Tableau y knime. He trabajado con plataformas como Google Colab. También tengo experiencia en el desarrollo de videojuegos utilizando el motor Unity.
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script>
+    // Configuración de Three.js
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth * 0.7, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Objeto 3D (por ejemplo, un cubo)
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    // Luz
+    const light = new THREE.PointLight(0xffffff, 1);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+
+    // Posición de la cámara
+    camera.position.z = 5;
+
+    // Animación
+    const animate = function () {
+      requestAnimationFrame(animate);
+
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+  </script>
+</body>
+</html>
