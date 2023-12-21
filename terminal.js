@@ -48,8 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Definimos inicialmente el diccionario sin 'help'
   var commandDict = {
     'Date': new Date().toLocaleString(),
-    'Biography': function() {
-      window.location.href = './Bio3D/index3D.html';
+    'profile': function() {
+      window.location.href = './Bio3D/profile3D.html';
+    },
+    'matrix': function() {
+      window.location.href = './Matrix/HtmlMatrix.html';
     }
   };
   
