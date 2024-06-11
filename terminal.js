@@ -56,7 +56,11 @@
     },
     'ielts': function() {
       window.location.href = './IELTS/IELTS_report_form.pdf';
+    },
+    'cv': function() {
+      window.location.href = './CV/CV_Felipe_Ramirez.pdf';
     }
+
   };
   
   // Actualizamos 'commandDict' con 'help' utilizando comandList(commandDict)
