@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
   const output = document.getElementById('output');
   const input = document.getElementById('command-input');
   const typingSpeed = 50; // Velocidad de escritura en milisegundos
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   // Mostrar mensaje de bienvenida con efecto de tecleo
-  const welcomeMessage = 'Hola, mi nombre es Andrés Felipe. escribe "help" y pulsa enter para ver los comandos disponibles.. ';
+  const welcomeMessage = 'Hola, mi nombre es Andrés Felipe. Escribe "help" y pulsa enter para ver los comandos disponibles.. ';
   showTextWithTypingEffect(welcomeMessage, output);
 
   // Deshabilitar la entrada del usuario hasta que se complete el mensaje de bienvenida
@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     'matrix': function() {
       window.location.href = './Matrix/HtmlMatrix.html';
+    },
+    'ielts': function() {
+      window.location.href = './IELTS/IELTS_report_form.pdf';
     }
   };
   
