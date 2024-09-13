@@ -8,7 +8,7 @@
 
 
   // Mostrar mensaje de bienvenida con efecto de tecleo
-  const welcomeMessage = 'Hola, mi nombre es Andrés Felipe. Escribe "help" y pulsa enter para ver los comandos disponibles.. ';
+  const welcomeMessage = 'Bienvenido/a a mi Code Play Ground donde tengo diferentes funcionalidades desarrolladas por mi o adapatadas de internet. Escribe "help" para ver los comandos';
   showTextWithTypingEffect(welcomeMessage, output);
 
   // Deshabilitar la entrada del usuario hasta que se complete el mensaje de bienvenida
@@ -47,26 +47,17 @@
   
   // Definimos inicialmente el diccionario sin 'help'
   var commandDict = {
-    
-    'profile': function() {
-      window.location.href = './Bio3D/profile3D.html';
-    },
-    'codePlayGround': function() {
-      window.location.href = './CPG/HtmlMatrix.html';
-    },
-    'ielts': function() {
-      window.location.href = './IELTS/IELTS_report_form.pdf';
-    },
-    'cv': function() {
-      window.location.href = './CV/CV_Felipe_Ramirez.pdf';
+    'Date': new Date().toLocaleString(),
+    'matrix': function() {
+      window.location.href = './Matrix/HtmlMatrix.html';
     }
-
+    
   };
   
   // Actualizamos 'commandDict' con 'help' utilizando comandList(commandDict)
   commandDict['help'] = comandList(commandDict);
 
-// Función para calcular la distancia de Levenshtein(por si el usuario escribe mal un comando, intenta aproximar lo que intento escribir)
+// Función para calcular la distancia de Levenshtein
 function levenshtein(a, b) {
   var temp, i, j, prev, val, row, matrix = [];
   var a = a + "", b = b + "";
