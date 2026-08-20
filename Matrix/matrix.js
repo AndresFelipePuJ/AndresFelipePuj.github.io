@@ -8,6 +8,13 @@ canvas.width = window.screen.width;
 var columns = []
 for (i = 0; i < 256; columns[i++] = 1);
 
+// controla si cada columna ya tuvo su primer reinicio (a partir de ahí cae a velocidad normal)
+var hasLooped = []
+for (i = 0; i < 256; hasLooped[i++] = false);
+
+var INITIAL_SPEED = 1000; // velocidad de caída antes del primer reinicio (más rápida)
+var NORMAL_SPEED = 10;  // velocidad de caída normal, una vez cae individualmente
+
 //ejecutado una vez por fotograma
 function step() {
     //Ligeramente oscurece todo el canvas dibujando un rectángulo negro casi trasnsparente sobre todo el canvas
@@ -32,7 +39,13 @@ function step() {
         
         //desplaza hacia abajo el carácter
         //si el carácter es menor de 758 entonces hay una posibilidad aleatoria de que sea reseteado
-        columns[index] = value > 758 + Math.random() * 1e4 ? 0 : value + 10
+        var speed = hasLooped[index] ? NORMAL_SPEED : INITIAL_SPEED;
+        if (value > 758 + Math.random() * 1e4) {
+            columns[index] = 0;
+            hasLooped[index] = true;
+        } else {
+            columns[index] = value + speed;
+        }
     })
 }
 

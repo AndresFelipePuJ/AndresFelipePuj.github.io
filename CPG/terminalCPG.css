@@ -17,6 +17,11 @@ body {
 
 }
 
+/* Reserva espacio para el botón "back to menu" (fixed, top-left) y evita que se solape con el marco */
+.terminal {
+  margin-top: 56px;
+}
+
 .terminal::-webkit-scrollbar {
   width: 1vw; /* Ancho del scrollbar relativo basado en el ancho de la ventana */
   background-color: #000;

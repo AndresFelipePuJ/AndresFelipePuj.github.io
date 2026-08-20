@@ -111,45 +111,7 @@
 </head>
 <body>
 
-  <div id="ui2">
-    <button id="back-btn2">← Volver</button>
-
-<style>
-  #back-btn2{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 100;
-
-    padding: 10px 16px;
-    border: none;
-    border-radius: 12px;
-
-    background: rgba(0,0,0,0.7);
-    color: white;
-
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    cursor: pointer;
-
-    backdrop-filter: blur(6px);
-    transition: all 0.3s ease;
-  }
-
-  #back-btn2:hover{
-    background: rgba(255,255,255,0.15);
-    transform: scale(1.05);
-  }
-</style>
-
-<script>
-  document.getElementById("back-btn2").addEventListener("click", () => {
-    window.location.href = "../index.html";
-  });
-</script>
-
- <!-- ===== BOTÓN DE VOLVER(fin) ===== -->
-
+  <div id="ui">
     <div id="hint">Haz clic en la Tierra</div>
     <div id="texto-caja">
       <h1>Profile</h1>
@@ -432,5 +394,8 @@
 
     animate();
   </script>
+
+  <script src="../Matrix/matrix-transition.js"></script>
+  <script src="../back-to-menu.js"></script>
 </body>
 </html>

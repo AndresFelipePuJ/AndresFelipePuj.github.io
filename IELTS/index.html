@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IELTS</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+    }
+    embed {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+    /* Chrome's built-in PDF viewer has its own toolbar at the top-left;
+       push the back button to the bottom-left to avoid overlapping it. */
+    #back-to-menu-btn {
+      top: auto !important;
+      bottom: 16px !important;
+    }
+  </style>
+</head>
+<body>
+  <embed src="./IELTS_report_form.pdf" type="application/pdf">
+
+  <script src="../Matrix/matrix-transition.js"></script>
+  <script src="../back-to-menu.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
   document.addEventListener('DOMContentLoaded', function() {
   const output = document.getElementById('output');
   const input = document.getElementById('command-input');
-  const typingSpeed = 50; // Velocidad de escritura en milisegundos
+  const typingSpeed = 80; // Velocidad de escritura en milisegundos
 
 
   output.style.whiteSpace = 'pre-wrap';
@@ -47,18 +47,22 @@
   
   // Definimos inicialmente el diccionario sin 'help'
   var commandDict = {
-    
+
     'profile': function() {
-      window.location.href = './Bio3D/profile3D.html';
+      window.MatrixTransition.navigate('./Bio3D/profile3D.html');
+      return '';
     },
     'codePlayGround': function() {
-      window.location.href = './CPG/HtmlMatrix.html';
+      window.MatrixTransition.navigate('./CPG/indexCPG.html');
+      return '';
     },
     'ielts': function() {
-      window.location.href = './IELTS/IELTS_report_form.pdf';
+      window.MatrixTransition.navigate('./IELTS/index.html');
+      return '';
     },
     'cv': function() {
-      window.location.href = './CV/CV_Felipe_Ramirez.pdf';
+      window.MatrixTransition.navigate('./CV/index.html');
+      return '';
     }
 
   };
@@ -94,8 +98,15 @@ function executeCommand(command) {
   // Convertimos el comando a minúsculas para que sea insensible a mayúsculas y minúsculas
   command = command.toLowerCase();
 
-  // Buscamos el comando en nuestro diccionario
-  var selectedCommand = commandDict[command];
+  // Buscamos el comando en nuestro diccionario (insensible a mayúsculas/minúsculas)
+  var matchedKey = null;
+  for (var dictKey in commandDict) {
+    if (dictKey.toLowerCase() === command) {
+      matchedKey = dictKey;
+      break;
+    }
+  }
+  var selectedCommand = matchedKey !== null ? commandDict[matchedKey] : undefined;
 
   // Si encontramos una función asociada al comando, la ejecutamos
   if (selectedCommand && typeof selectedCommand === 'function') {
@@ -105,7 +116,7 @@ function executeCommand(command) {
     var minDistance = Infinity;
     var closestCommand = null;
     for (var key in commandDict) {
-      var distance = levenshtein(command, key);
+      var distance = levenshtein(command, key.toLowerCase());
       if (distance < minDistance) {
         minDistance = distance;
         closestCommand = key;
